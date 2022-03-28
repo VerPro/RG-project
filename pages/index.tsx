@@ -2,8 +2,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import { auth, googleAuthProvider } from './db.js';
 
 export default function App() {
+  const signInWithGoogle = async () => {
+    await auth.signInWithPopup(googleAuthProvider);
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -31,6 +36,8 @@ export default function App() {
           </Link>
         </li>
       </ul>
+
+      <button onClick={signInWithGoogle}>Sign in</button>
     </>
   );
 }

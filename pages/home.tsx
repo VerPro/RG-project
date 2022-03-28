@@ -6,7 +6,7 @@ export default function Home() {
       <h1>Čajový deník</h1>
       <ul>
         <li>
-          <Link href="/authorized/myTeas">
+          <Link href="/authorized/my-teas">
             <a>Moje čajová polička</a>
           </Link>
         </li>
