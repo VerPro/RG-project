@@ -1,22 +1,21 @@
 import Link from 'next/link';
+import Button from '@mui/material/Button';
 
 export default function Login() {
   return (
     <>
       <h1>Přihlásit se</h1>
-      <ul>
-        <li>
-          <Link href="/">
-            <a>Domů</a>
-          </Link>
-        </li>
+      <Button variant="outlined">
+        <Link href="/">
+          <a>Domů</a>
+        </Link>
+      </Button>
 
-        <li>
-          <Link href="/authorized/home">
-            <a>Přihlásit se</a>
-          </Link>
-        </li>
-      </ul>
+      <Button variant="outlined">
+        <Link href="/home">
+          <a>Přihlásit se</a>
+        </Link>
+      </Button>
     </>
   );
 }

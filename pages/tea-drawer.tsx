@@ -1,18 +1,16 @@
 import Link from 'next/link';
+import Button from '@mui/material/Button';
 
 export default function Diary() {
   return (
     <>
       <h1>Vylosuj mi čaj</h1>
 
-      <ul>
-        <li>
-          <Link href="/authorized/home">
-            <a> Domů</a>
-          </Link>
-        </li>
-        <li></li>
-      </ul>
+      <Button variant="outlined">
+        <Link href="/home">
+          <a> Domů</a>
+        </Link>
+      </Button>
     </>
   );
 }

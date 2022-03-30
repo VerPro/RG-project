@@ -1,23 +1,22 @@
 import Link from 'next/link';
+import Button from '@mui/material/Button';
 
 export default function Welcome() {
   return (
     <>
       <h1>Čajový deník</h1>
-      <p>Vítejte</p>
+      <p>Vítejte ve svém čajovém deníku</p>
 
-      <ul>
-        <li>
-          <Link href="/public/login">
-            <a>Přihlásit se</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/public/signin">
-            <a>Zaregistrovat se</a>
-          </Link>
-        </li>
-      </ul>
+      <Button variant="outlined">
+        <Link href="/login">
+          <a>Přihlásit se</a>
+        </Link>
+      </Button>
+      <Button variant="outlined">
+        <Link href="/signin">
+          <a>Zaregistrovat se</a>
+        </Link>
+      </Button>
     </>
   );
 }

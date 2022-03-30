@@ -1,3 +1,4 @@
+import Button from '@mui/material/Button';
 import Link from 'next/link';
 
 export default function AddEntry() {
@@ -5,14 +6,11 @@ export default function AddEntry() {
     <>
       <h1>Přidat zápis</h1>
 
-      <ul>
-        <li>
-          <Link href="/authorized/diary">
-            <a>Zpět</a>
-          </Link>
-        </li>
-        <li></li>
-      </ul>
+      <Button variant="outlined">
+        <Link href="/diary">
+          <a>Zpět</a>
+        </Link>
+      </Button>
     </>
   );
 }
