@@ -6,19 +6,20 @@ export default function Diary() {
     <>
       <h1>Můj deník</h1>
 
-      <Button variant="outlined">
-        <Link href="/home">
+      <Link href="/home">
+        <Button variant="outlined">
           <a> Domů</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
 
       <p>Zatím zde nemáš přidaný žádný deníkový zápis :-(</p>
       <p>Můžeš začít tím, že si přidáš nějaký deníkový zápis</p>
-      <Button variant="outlined">
-        <Link href="/add-entry">
+
+      <Link href="/add-entry">
+        <Button variant="outlined">
           <a>Přidat zápis</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

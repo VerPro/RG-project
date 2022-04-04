@@ -6,11 +6,11 @@ export default function AddEntry() {
     <>
       <h1>Přidat zápis</h1>
 
-      <Button variant="outlined">
-        <Link href="/diary">
+      <Link href="/diary">
+        <Button variant="outlined">
           <a>Zpět</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

@@ -7,7 +7,7 @@ export default function AddTea() {
       <h1>Přidat čaj</h1>
 
       <Button variant="outlined">
-        <Link href="/myTeas">
+        <Link href="/my-teas">
           <a>Zpět</a>
         </Link>
       </Button>

@@ -4,11 +4,12 @@ export default function SignIn() {
   return (
     <>
       <h1>Založit účet</h1>
-      <Button variant="outlined">
-        <Link href="/">
+
+      <Link href="/">
+        <Button variant="outlined">
           <a>Domů</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

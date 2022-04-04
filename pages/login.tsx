@@ -5,17 +5,18 @@ export default function Login() {
   return (
     <>
       <h1>Přihlásit se</h1>
-      <Button variant="outlined">
-        <Link href="/">
-          <a>Domů</a>
-        </Link>
-      </Button>
 
-      <Button variant="outlined">
-        <Link href="/home">
+      <Link href="/">
+        <Button variant="outlined">
+          <a>Domů</a>
+        </Button>
+      </Link>
+
+      <Link href="/home">
+        <Button variant="outlined">
           <a>Přihlásit se</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

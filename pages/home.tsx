@@ -6,31 +6,36 @@ export default function Home() {
   return (
     <Box className="main">
       <h1>Čajový deník</h1>
-      <Button variant="outlined">
-        <Link href="/my-teas">
+
+      <Link href="/my-teas">
+        <Button variant="outlined">
           <a>Moje čajová polička</a>
-        </Link>
-      </Button>
-      <Button variant="outlined">
-        <Link href="/diary">
+        </Button>
+      </Link>
+
+      <Link href="/diary">
+        <Button variant="outlined">
           <a>Můj deník</a>
-        </Link>
-      </Button>
-      <Button variant="outlined">
-        <Link href="/tea-drawer">
+        </Button>
+      </Link>
+
+      <Link href="/tea-drawer">
+        <Button variant="outlined">
           <a>Vylosuj mi čaj</a>
-        </Link>
-      </Button>
-      <Button variant="outlined">
-        <Link href="/blog">
+        </Button>
+      </Link>
+
+      <Link href="/blog">
+        <Button variant="outlined">
           <a>Blog</a>
-        </Link>
-      </Button>
-      <Button variant="outlined">
-        <Link href="/welcome">
+        </Button>
+      </Link>
+
+      <Link href="/welcome">
+        <Button variant="outlined">
           <a>Odhlásit</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </Box>
   );
 }

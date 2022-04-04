@@ -6,11 +6,11 @@ export default function Diary() {
     <>
       <h1>Vylosuj mi čaj</h1>
 
-      <Button variant="outlined">
-        <Link href="/home">
+      <Link href="/home">
+        <Button variant="outlined">
           <a> Domů</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import Link from 'next/link';
 
 export default function MyTeas() {
@@ -6,19 +6,20 @@ export default function MyTeas() {
     <>
       <h1>Moje čajová polička</h1>
 
-      <Button variant="outlined">
-        <Link href="/home">
+      <Link href="/home">
+        <Button variant="outlined">
           <a> Domů</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
 
       <p>Zatím zde nemáš přidaný žádný čaj :-(</p>
       <p>Můžeš začít tím, že si přidáš nějaký čaj</p>
-      <Button variant="outlined">
-        <Link href="/add-tea">
+
+      <Link href="/add-tea">
+        <Button variant="outlined">
           <a>Přidat čaj</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

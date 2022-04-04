@@ -7,16 +7,17 @@ export default function Welcome() {
       <h1>Čajový deník</h1>
       <p>Vítejte ve svém čajovém deníku</p>
 
-      <Button variant="outlined">
-        <Link href="/login">
+      <Link href="/login">
+        <Button variant="outlined">
           <a>Přihlásit se</a>
-        </Link>
-      </Button>
-      <Button variant="outlined">
-        <Link href="/signin">
+        </Button>
+      </Link>
+
+      <Link href="/signin">
+        <Button variant="outlined">
           <a>Zaregistrovat se</a>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </>
   );
 }

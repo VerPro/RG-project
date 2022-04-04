@@ -29,18 +29,20 @@ export default function App() {
           čekají na objevení.
         </p>
 
-        <Button variant="outlined">
-          <Link href="/signin">
+        <Link href="/signin">
+          <Button variant="outlined">
             <a>Vytvořit účet</a>
-          </Link>
-        </Button>
+          </Button>
+        </Link>
 
         <p>Máte již svůj účet? Přihlaste se!</p>
-        <Button variant="outlined">
-          <Link href="/login">
+
+        <Link href="/login">
+          <Button variant="outlined">
             <a>Přihlásit se</a>
-          </Link>
-        </Button>
+          </Button>
+        </Link>
+
         <Button variant="outlined" onClick={signInWithGoogle}>
           Přihlásit se pomocí Google účtu
         </Button>
