@@ -4,7 +4,9 @@ import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import { auth, googleAuthProvider } from './db.js';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import logo from '../public/logo.png';
+import GoogleIcon from '@mui/icons-material/Google';
+import { Stack } from '@mui/material';
 
 export default function App() {
   const signInWithGoogle = async () => {
@@ -20,8 +22,11 @@ export default function App() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       </div>
-      <Box className="main">
+      <Stack className="main" spacing={2}>
         <h1>Čajový deník</h1>
+
+        <Image src={logo} width={200} height={200}></Image>
+
         <p>
           Aplikace Čajový deník je dobrou přítelkyní každému, koho těší cesta
           čaje a rád by si své kroky zaznamenával. Na jednom místě si můžete
@@ -43,10 +48,14 @@ export default function App() {
           </Button>
         </Link>
 
-        <Button variant="outlined" onClick={signInWithGoogle}>
+        <Button
+          variant="outlined"
+          onClick={signInWithGoogle}
+          startIcon={<GoogleIcon />}
+        >
           Přihlásit se pomocí Google účtu
         </Button>
-      </Box>
+      </Stack>
     </>
   );
 }

@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
 
 export default function Home() {
   return (
-    <Box className="main">
+    <Stack spacing={2}>
       <h1>Čajový deník</h1>
 
       <Link href="/my-teas">
@@ -31,11 +31,11 @@ export default function Home() {
         </Button>
       </Link>
 
-      <Link href="/welcome">
+      <Link href="/">
         <Button variant="outlined">
           <a>Odhlásit</a>
         </Button>
       </Link>
-    </Box>
+    </Stack>
   );
 }

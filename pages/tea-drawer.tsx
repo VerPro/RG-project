@@ -8,7 +8,7 @@ export default function Diary() {
 
       <Link href="/home">
         <Button variant="outlined">
-          <a> Domů</a>
+          <a>Domů</a>
         </Button>
       </Link>
     </>
