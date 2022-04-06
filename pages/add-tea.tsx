@@ -14,13 +14,20 @@ import {
   TextField,
 } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
+import DateAdapter from '@mui/lab/AdapterDayjs';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { DatePicker } from '@mui/lab';
 
 export default function AddTea() {
   //Select management
   const [selectedTea, setSelectedTea] = useState('');
   const handleSelectedTeaChange = (e: SelectChangeEvent) => {
-    setSelectedTea(e.target.value as string);
+    setSelectedTea(e.target.value);
   };
+  //
+
+  //DatePicker management
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   //
 
   //Checkbox management
@@ -57,7 +64,7 @@ export default function AddTea() {
           required
           id="outlined"
           label="Název čaje"
-          defaultValue="Zde napište název čaje"
+          helperText="Zde napište název čaje"
         ></TextField>
 
         <FormControl>
@@ -84,15 +91,19 @@ export default function AddTea() {
           required
           id="outlined"
           label="Dodavatel"
-          defaultValue="Kde jste čaj koupili?"
+          helperText="Kde jste čaj koupili?"
         ></TextField>
 
-        <TextField
-          required
-          id="outlined"
-          label="Datum zakoupení"
-          defaultValue="Kdy jste čaj koupili?"
-        ></TextField>
+        <LocalizationProvider dateAdapter={DateAdapter}>
+          <DatePicker
+            label="Datum zakoupení"
+            value={selectedDate}
+            onChange={(newDate) => {
+              setSelectedDate(newDate);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+          ></DatePicker>
+        </LocalizationProvider>
 
         <TextField required id="outlined" label="Země původu"></TextField>
 
@@ -159,6 +170,11 @@ export default function AddTea() {
             />
           </FormGroup>
         </FormControl>
+        <Link href="/add-tea">
+          <Button variant="outlined">
+            <a>Přidat čaj</a>
+          </Button>
+        </Link>
       </Stack>
     </>
   );
