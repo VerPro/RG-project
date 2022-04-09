@@ -20,6 +20,7 @@ import { DatePicker } from '@mui/lab';
 
 export default function AddTea() {
   //Select management
+  //možná ten list nacpat do FB a vyexportovat sem?
   const listOfTeaTypes: string[] = [
     'Bílý čaj',
     'Zelený čaj',
@@ -143,10 +144,12 @@ export default function AddTea() {
             {listOfTastes.map((taste: string) => {
               return (
                 <FormControlLabel
+                  key={taste}
                   label={taste}
                   value={taste}
                   control={
                     <Checkbox
+                      key={taste}
                       checked={tasteCharacter.includes({ taste })}
                       onChange={handleTeaCharacterChange}
                     />
