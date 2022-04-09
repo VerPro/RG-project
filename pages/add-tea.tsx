@@ -17,6 +17,7 @@ import { ChangeEvent, useState } from 'react';
 import DateAdapter from '@mui/lab/AdapterDayjs';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { DatePicker } from '@mui/lab';
+import { TasteCharacter } from '../components/TasteCharacter';
 
 export default function AddTea() {
   //Select management
@@ -43,43 +44,6 @@ export default function AddTea() {
 
   //DatePicker management
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  //
-
-  //Checkbox management
-  //možná ten list nacpat do FB a vyexportovat sem?
-  const listOfTastes: string[] = [
-    'Lesní plody',
-    'Citrusy',
-    'Exotické ovoce',
-    'Peckoviny',
-    'Květy',
-    'Bylinný',
-    'Travnatost',
-    'Koření',
-    'Sladkost',
-    'Slanost',
-    'Vegetálnost',
-    'Pikantnost',
-    'Zemitost',
-    'Čokoláda',
-    'Kouřovitost',
-    'Praženost',
-    'Dřevitost',
-    'Svíravost',
-    'Ořechy',
-  ];
-
-  const [tasteCharacter, setTasteCharacter] = useState<string[]>([]);
-  const handleTeaCharacterChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const index = tasteCharacter.indexOf(e.target.value);
-    if (index === -1) {
-      setTasteCharacter([...tasteCharacter, e.target.value]);
-    } else {
-      setTasteCharacter(
-        tasteCharacter.filter((taste) => taste !== e.target.value),
-      );
-    }
-  };
   //
 
   return (
@@ -138,27 +102,7 @@ export default function AddTea() {
 
         <TextField required id="outlined" label="Země původu"></TextField>
 
-        <FormControl>
-          <FormLabel component="legend">Chuťový charakter</FormLabel>
-          <FormGroup>
-            {listOfTastes.map((taste: string) => {
-              return (
-                <FormControlLabel
-                  key={taste}
-                  label={taste}
-                  value={taste}
-                  control={
-                    <Checkbox
-                      key={taste}
-                      checked={tasteCharacter.includes({ taste })}
-                      onChange={handleTeaCharacterChange}
-                    />
-                  }
-                />
-              );
-            })}
-          </FormGroup>
-        </FormControl>
+        <TasteCharacter />
 
         <Link href="/add-tea">
           <Button variant="outlined">
