@@ -31,22 +31,38 @@ export default function AddTea() {
   //
 
   //Checkbox management
-  const [teaProfile, setTeaProfile] = useState({
-    Květinový: false,
-    Dřevitý: false,
-    Ovocný: false,
-    Pečený: false,
-    Bylinný: false,
-    Travnatý: false,
-    Karamel: false,
-    Zemitý: false,
-    Jiný: false,
-  });
-  const handleTeaProfileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTeaProfile({
-      ...teaProfile,
-      [e.target.name]: e.target.checked,
-    });
+  const listOfTastes = [
+    'Lesní plody',
+    'Citrusy',
+    'Exotické ovoce',
+    'Peckoviny',
+    'Květy',
+    'Bylinný',
+    'Travnatost',
+    'Koření',
+    'Sladkost',
+    'Slanost',
+    'Vegetálnost',
+    'Pikantnost',
+    'Zemitost',
+    'Čokoláda',
+    'Kouřovitost',
+    'Praženost',
+    'Dřevitost',
+    'Svíravost',
+    'Ořechy',
+  ];
+
+  const [tasteCharacter, setTasteCharacter] = useState<string[]>([]);
+  const handleTeaCharacterChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const index = tasteCharacter.indexOf(e.target.value);
+    if (index === -1) {
+      setTasteCharacter([...tasteCharacter, e.target.value]);
+    } else {
+      setTasteCharacter(
+        tasteCharacter.filter((taste) => taste !== e.target.value),
+      );
+    }
   };
   //
 
@@ -107,69 +123,26 @@ export default function AddTea() {
 
         <TextField required id="outlined" label="Země původu"></TextField>
 
-        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-          <FormLabel component="legend">Chuťový profil</FormLabel>
+        <FormControl>
+          <FormLabel component="legend">Chuťový charakter</FormLabel>
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Květinový" />
-              }
-              label="Květinový"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Ovocný" />
-              }
-              label="Ovocný"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Bylinný" />
-              }
-              label="Bylinný"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Travnatý" />
-              }
-              label="Travnatý"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Jiný" />
-              }
-              label="Jiný"
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Dřevitý" />
-              }
-              label="Dřevitý"
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Pečený" />
-              }
-              label="Pečený"
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Karamel" />
-              }
-              label="Karamel"
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox onChange={handleTeaProfileChange} name="Zemitý" />
-              }
-              label="Zemitý"
-            />
+            {listOfTastes.map((taste) => {
+              return (
+                <FormControlLabel
+                  label={taste}
+                  value={taste}
+                  control={
+                    <Checkbox
+                      checked={tasteCharacter.includes({ taste })}
+                      onChange={handleTeaCharacterChange}
+                    />
+                  }
+                />
+              );
+            })}
           </FormGroup>
         </FormControl>
+
         <Link href="/add-tea">
           <Button variant="outlined">
             <a>Přidat čaj</a>
