@@ -20,6 +20,20 @@ import { DatePicker } from '@mui/lab';
 
 export default function AddTea() {
   //Select management
+  const listOfTeaTypes: string[] = [
+    'Bílý čaj',
+    'Zelený čaj',
+    'Žlutý čaj',
+    'Oolong',
+    'Červený čaj',
+    'Černý čaj',
+    'Pu-erh',
+    'Matcha',
+    'Bylinný čaj',
+    'Maté',
+    'Jiný',
+  ];
+
   const [selectedTea, setSelectedTea] = useState('');
   const handleSelectedTeaChange = (e: SelectChangeEvent) => {
     setSelectedTea(e.target.value);
@@ -31,7 +45,8 @@ export default function AddTea() {
   //
 
   //Checkbox management
-  const listOfTastes = [
+  //možná ten list nacpat do FB a vyexportovat sem?
+  const listOfTastes: string[] = [
     'Lesní plody',
     'Citrusy',
     'Exotické ovoce',
@@ -92,14 +107,13 @@ export default function AddTea() {
             label="Tea"
             onChange={handleSelectedTeaChange}
           >
-            <MenuItem value={'Bílý čaj'}>Bílý čaj</MenuItem>
-            <MenuItem value={'Žlutý čaj'}>Žlutý čaj</MenuItem>
-            <MenuItem value={'Zelený čaj'}>Zelený čaj</MenuItem>
-            <MenuItem value={'Červeý čaj'}>Červeý čaj</MenuItem>
-            <MenuItem value={'Černý čaj'}>Černý čaj</MenuItem>
-            <MenuItem value={'Puer'}>Puer</MenuItem>
-            <MenuItem value={'Oolong'}>Oolong</MenuItem>
-            <MenuItem value={'Jiný'}>Jiný</MenuItem>
+            {listOfTeaTypes.map((tea: string) => {
+              return (
+                <MenuItem key={tea} value={tea}>
+                  {tea}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
 
@@ -126,7 +140,7 @@ export default function AddTea() {
         <FormControl>
           <FormLabel component="legend">Chuťový charakter</FormLabel>
           <FormGroup>
-            {listOfTastes.map((taste) => {
+            {listOfTastes.map((taste: string) => {
               return (
                 <FormControlLabel
                   label={taste}
