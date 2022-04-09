@@ -1,9 +1,10 @@
 import { LocalizationProvider, DatePicker } from '@mui/lab';
 import DateAdapter from '@mui/lab/AdapterDayjs';
-import { Stack, TextField } from '@mui/material';
+import { Box, InputAdornment, Stack, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Infusion } from '../components/Infusion';
 
 export default function AddEntry() {
   //DatePicker management - potřeba upravi, opakuje se
@@ -31,6 +32,36 @@ export default function AddEntry() {
           renderInput={(params) => <TextField {...params} />}
         ></DatePicker>
       </LocalizationProvider>
+
+      <Stack direction="row" justifyContent="center" alignItems="center">
+        <Button variant="outlined" size="small">
+          Přidat čaj z Mojí čajové poličky
+        </Button>
+        <p>NEBO</p>
+        <Button variant="outlined" size="small">
+          Přidat nový čaj
+        </Button>
+      </Stack>
+
+      <TextField
+        required
+        id="outlined"
+        label="Hmotnost čaje:"
+        InputProps={{
+          endAdornment: <InputAdornment position="end">g</InputAdornment>,
+        }}
+      ></TextField>
+
+      <TextField
+        required
+        id="outlined"
+        label="Objem vody:"
+        InputProps={{
+          endAdornment: <InputAdornment position="end">ml</InputAdornment>,
+        }}
+      ></TextField>
+
+      <Infusion></Infusion>
     </Stack>
   );
 }
