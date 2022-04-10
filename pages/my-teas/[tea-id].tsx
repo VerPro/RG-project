@@ -24,7 +24,7 @@ export const Tea = () => {
       <h2>Deníkové zápisy</h2>
       <Link>
         {' '}
-        <a href=""></a>{' '}
+        <a href="">Čajování na vyhlídce</a>{' '}
       </Link>{' '}
       {/* Tahat z databáze */}
       <Button variant="outlined">Editovat čaj na poličce </Button>
