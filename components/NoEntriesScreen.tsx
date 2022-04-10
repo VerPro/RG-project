@@ -1,8 +1,7 @@
+import { Stack, Button } from '@mui/material';
 import Link from 'next/link';
-import Button from '@mui/material/Button';
-import { Stack } from '@mui/material';
 
-export default function Diary() {
+export const NoEntriesScreen = () => {
   return (
     <>
       <Stack>
@@ -25,4 +24,4 @@ export default function Diary() {
       </Stack>
     </>
   );
-}
+};
