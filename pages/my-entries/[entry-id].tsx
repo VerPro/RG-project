@@ -29,33 +29,32 @@ export const Entry = () => {
       {/* Tahat z databáze */}
       <h2>Příprava</h2>
       <p>Hmotnost: 8 g</p> {/* Tahat z databáze */}
-      <p>Objem vody: 120 ml</p>
+      <p>Objem vody: 120 ml</p> {/* Tahat z databáze */}
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>{`1. nálev`}</Typography>
+          <Typography>{`1. nálev`}</Typography> {/* Tahat z databáze */}
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
             <Stack spacing={2}>
               <h2>Délka nálevu:</h2>
-              <p>60 s</p>
+              <p>60 s</p> {/* Tahat z databáze */}
               <h2>Teplota vody:</h2>
-              <p>80 °C </p>
-
+              <p>80 °C </p> {/* Tahat z databáze */}
               <h2>Chuťový profil</h2>
-              <p>Bylinný</p>
-
+              <p>Bylinný</p> {/* Tahat z databáze */}
               <h2>Poznámky</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Dolorem, quos distinctio, pariatur sint tenetur harum itaque
                 fuga labore aliquid est, explicabo culpa velit laborum id
                 possimus sit ratione delectus suscipit?
-              </p>
+              </p>{' '}
+              {/* Tahat z databáze */}
             </Stack>
           </Typography>
         </AccordionDetails>
