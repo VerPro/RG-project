@@ -6,10 +6,10 @@ import { NoTeasScreen } from '../../components/NoTeasScreen';
 import { TeaShelf } from '../../components/TeaShelf';
 import { db } from '../db';
 
-export default function MyTeas() {
+const MyTeas = () => {
   console.log(`databáze: ${db}`);
 
-  const [numberOfTeas, setNumberOfTeas] = useState(0);
+  const [numberOfTeas, setNumberOfTeas] = useState();
 
   //setNumberOfTeas(db.lenght) - tak nějak
 
@@ -18,4 +18,6 @@ export default function MyTeas() {
   } else {
     return TeaShelf();
   }
-}
+};
+
+export default MyTeas;
