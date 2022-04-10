@@ -13,7 +13,7 @@ export default function Home() {
         </Button>
       </Link>
 
-      <Link href="/diary">
+      <Link href="/my-entries">
         <Button variant="outlined">
           <a>Můj deník</a>
         </Button>
