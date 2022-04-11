@@ -25,7 +25,7 @@ export default function App() {
       <Stack className="main" spacing={2}>
         <h1>Čajový deník</h1>
 
-        <Image src={logo} width={200} height={200}></Image>
+        <Image src={logo} width={200} height={200} alt=""></Image>
 
         <p>
           Aplikace Čajový deník je dobrou přítelkyní každému, koho těší cesta
@@ -34,7 +34,7 @@ export default function App() {
           čekají na objevení.
         </p>
 
-        <Link href="/signin">
+        <Link href="/signin" passHref>
           <Button variant="outlined">
             <a>Vytvořit účet</a>
           </Button>
@@ -42,7 +42,7 @@ export default function App() {
 
         <p>Máte již svůj účet? Přihlaste se!</p>
 
-        <Link href="/login">
+        <Link href="/login" passHref>
           <Button variant="outlined">
             <a>Přihlásit se</a>
           </Button>

@@ -15,7 +15,7 @@ export default function AddEntry() {
     <Stack spacing={2}>
       <h1>Přidat zápis</h1>
 
-      <Link href="/diary">
+      <Link href="/my-entries" passHref>
         <Button variant="outlined">
           <a>Zpět</a>
         </Button>

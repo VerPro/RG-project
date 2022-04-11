@@ -50,7 +50,7 @@ export default function AddTea() {
     <>
       <h1>Přidat čaj</h1>
       <Stack spacing={2}>
-        <Link href="/my-teas">
+        <Link href="/my-teas" passHref>
           <Button variant="outlined">
             <a>Zpět</a>
           </Button>
@@ -104,7 +104,7 @@ export default function AddTea() {
 
         <TasteCharacter />
 
-        <Link href="/add-tea">
+        <Link href="/add-tea" passHref>
           <Button variant="outlined">
             <a>Přidat čaj</a>
           </Button>

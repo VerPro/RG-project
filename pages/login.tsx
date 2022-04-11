@@ -7,13 +7,13 @@ export default function Login() {
     <>
       <h1>Přihlásit se</h1>
       <Stack spacing={2}>
-        <Link href="/home">
+        <Link href="/home" passHref>
           <Button variant="outlined">
             <a>Přihlásit se</a>
           </Button>
         </Link>
 
-        <Link href="/">
+        <Link href="/" passHref>
           <Button variant="outlined">
             <a>Domů</a>
           </Button>

@@ -13,7 +13,7 @@ export const Entry = () => {
   return (
     <Stack>
       <h1>Můj deník</h1>
-      <Link href="/my-teas">
+      <Link href="/my-teas" passHref>
         <Button variant="outlined">
           <a>Zpět</a>
         </Button>

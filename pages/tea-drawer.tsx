@@ -6,7 +6,7 @@ export default function Diary() {
     <>
       <h1>Vylosuj mi čaj</h1>
 
-      <Link href="/home">
+      <Link href="/home" passHref>
         <Button variant="outlined">
           <a>Domů</a>
         </Button>

@@ -5,7 +5,7 @@ export default function SignIn() {
     <>
       <h1>Založit účet</h1>
 
-      <Link href="/">
+      <Link href="/" passHref>
         <Button variant="outlined">
           <a>Domů</a>
         </Button>

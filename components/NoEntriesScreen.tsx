@@ -7,7 +7,7 @@ export const NoEntriesScreen = () => {
       <Stack>
         <h1>Můj deník</h1>
 
-        <Link href="/home">
+        <Link href="/home" passHref>
           <Button variant="outlined">
             <a> Domů</a>
           </Button>
@@ -16,7 +16,7 @@ export const NoEntriesScreen = () => {
         <p>Zatím zde nemáš přidaný žádný deníkový zápis :-(</p>
         <p>Můžeš začít tím, že si přidáš nějaký deníkový zápis</p>
 
-        <Link href="/add-entry">
+        <Link href="/add-entry" passHref>
           <Button variant="outlined">
             <a>Přidat zápis</a>
           </Button>
