@@ -71,8 +71,8 @@ export const Infusion = () => {
         alignItems="center"
         spacing={2}
       >
-        <Button variant="outlined">Přidat nálev</Button>
-        <Button variant="outlined">Odebrat nálev</Button>
+        <Button variant="outlined" onClick={() => setAccordionCounter([...accordionCounter, accordionCounter.length + 1])}>Přidat nálev</Button>
+        <Button variant="outlined" onClick={() => setAccordionCounter(accordionCounter.splice(0, accordionCounter.length - 1))}>Odebrat nálev</Button>
       </Stack>
     </>
   );
