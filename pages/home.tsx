@@ -7,31 +7,31 @@ export default function Home() {
     <Stack spacing={2}>
       <h1>Čajový deník</h1>
 
-      <Link href="/my-teas">
+      <Link href="/my-teas" passHref>
         <Button variant="outlined">
           <a>Moje čajová polička</a>
         </Button>
       </Link>
 
-      <Link href="/my-entries">
+      <Link href="/my-entries" passHref>
         <Button variant="outlined">
           <a>Můj deník</a>
         </Button>
       </Link>
 
-      <Link href="/tea-drawer">
+      <Link href="/tea-drawer" passHref>
         <Button variant="outlined">
           <a>Vylosuj mi čaj</a>
         </Button>
       </Link>
 
-      <Link href="/blog">
+      <Link href="/blog" passHref>
         <Button variant="outlined">
           <a>Blog</a>
         </Button>
       </Link>
 
-      <Link href="/">
+      <Link href="/" passHref>
         <Button variant="outlined">
           <a>Odhlásit</a>
         </Button>
