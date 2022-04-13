@@ -2,16 +2,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
-import { auth, googleAuthProvider } from './db.js';
 import Button from '@mui/material/Button';
 import logo from '../public/logo.png';
 import GoogleIcon from '@mui/icons-material/Google';
 import { Stack } from '@mui/material';
+import { auth, signInWithGoogle } from '../db';
+import { useContext } from 'react';
+import { UserContext } from '../context';
 
 export default function App() {
-  const signInWithGoogle = async () => {
-    await auth.signInWithPopup(googleAuthProvider);
-  };
+
+  //const value = useContext(UserContext);
+  const user = auth.currentUser;
 
   return (
     <>
@@ -48,13 +50,20 @@ export default function App() {
           </Button>
         </Link>
 
-        <Button
+        {user ? <Link href="/home" passHref>
+          <Button variant="outlined">
+            <a>Můj čajový deník</a>
+          </Button>
+        </Link> : <Button
           variant="outlined"
           onClick={signInWithGoogle}
           startIcon={<GoogleIcon />}
         >
           Přihlásit se pomocí Google účtu
         </Button>
+        }
+
+
       </Stack>
     </>
   );

@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
+import { auth, logOut } from '../db';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Home() {
+
+  const [user] = useAuthState(auth)
   return (
     <Stack spacing={2}>
       <h1>Čajový deník</h1>
 
-      <Link href="/my-teas" passHref>
+      <Link href={`${user?.uid}/my-teas`} passHref>
         <Button variant="outlined">
           <a>Moje čajová polička</a>
         </Button>
@@ -32,7 +36,7 @@ export default function Home() {
       </Link>
 
       <Link href="/" passHref>
-        <Button variant="outlined">
+        <Button variant="outlined" onClick={logOut}>
           <a>Odhlásit</a>
         </Button>
       </Link>
