@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { NoTeasScreen } from '../../components/NoTeasScreen';
 import { TeaShelf } from '../../components/TeaShelf';
-import { db } from '../db';
+import { db } from '../../db';
 
 const MyTeas = () => {
   console.log(`databáze: ${db}`);

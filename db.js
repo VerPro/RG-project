@@ -22,7 +22,7 @@ initializeApp(firebaseConfig);
   firebase.initializeApp(firebaseConfig);
 }*/
 
-const db =getFirestore()
+export const db =getFirestore()
 
 const collectionRef = collection(db, 'users')
 
@@ -45,11 +45,10 @@ const teasRef = collection(db, 'teas')
 
 getDocs(teasRef).then(snapshot => {console.log(snapshot.docs)})
 
-const teas = query(CollectionGroup(db, 'teas'), where("type", "==", "oolong"))
+const teas = query(collectionGroup(db, 'teas'), where("type", "==", "oolong"))
 
-const querySnapshot = await getDocs(teas)
 
-console.log(querySnapshot)
+
 
 //export const auth = firebase.auth();
 
