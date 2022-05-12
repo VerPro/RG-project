@@ -1,9 +1,15 @@
-import { initializeApp } from "firebase/app";
-import{
-  getFirestore, collection, getDocs,
-  onSnapshot,addDoc, deleteDoc, doc,
-  query, where, collectionGroup
-
+import { initializeApp } from 'firebase/app';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  onSnapshot,
+  addDoc,
+  deleteDoc,
+  doc,
+  query,
+  where,
+  collectionGroup,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -22,33 +28,33 @@ initializeApp(firebaseConfig);
   firebase.initializeApp(firebaseConfig);
 }*/
 
-export const db =getFirestore()
+export const db = getFirestore();
 
-const collectionRef = collection(db, 'users')
+const collectionRef = collection(db, 'users');
 
 //queries
-const q = query(collectionRef, where('id', '==', 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1'))
+const q = query(
+  collectionRef,
+  where('id', '==', 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1'),
+);
 
+getDocs(collectionRef).then((snapshot) => {
+  console.log(snapshot.docs);
+});
 
+const idRef = collection(db, 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1');
 
-getDocs(collectionRef)
-  .then(snapshot => {
-    console.log(snapshot.docs)
+getDocs(idRef).then((snapshot) => {
+  console.log(snapshot.docs);
+});
 
-  })
+const teasRef = collection(db, 'teas');
 
-  const idRef = collection(db, "QoHR14C7tUhQ0ZWORxZoWUU4mGn1")
+getDocs(teasRef).then((snapshot) => {
+  console.log(snapshot.docs);
+});
 
-  getDocs(idRef).then(snapshot => {console.log(snapshot.docs)})
-
-const teasRef = collection(db, 'teas')
-
-getDocs(teasRef).then(snapshot => {console.log(snapshot.docs)})
-
-const teas = query(collectionGroup(db, 'teas'), where("type", "==", "oolong"))
-
-
-
+const teas = query(collectionGroup(db, 'teas'), where('type', '==', 'oolong'));
 
 //export const auth = firebase.auth();
 
