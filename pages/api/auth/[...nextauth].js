@@ -2,8 +2,9 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import { FirebaseAdapter } from '@next-auth/firebase-adapter';
 
-import firebase from 'firebase/app';
+import firebase, { getApps, getApp, initializeApp } from 'firebase/app';
 import 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDB3fNy4oVq_iX7k1xQ_0P-qvI_KV96PPA',
@@ -13,6 +14,9 @@ const firebaseConfig = {
   messagingSenderId: '204364589194',
   appId: '1:204364589194:web:734a448e130db87bcda573',
 };
+
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const db = getFirestore();
 
 const firestore = (
   firebase.apps[0] ?? firebase.initializeApp(firebaseConfig)
