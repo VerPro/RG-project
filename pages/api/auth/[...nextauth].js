@@ -7,9 +7,9 @@ import * as firestoreFunctions from 'firebase/firestore';
 export default NextAuth({
   providers: [
     GoogleProvider({
-      clientId:
-        '557058472327-kqb5r1bmnj8oemviud6gqpk6uncg67fh.apps.googleusercontent.com',
-      clientSecret: '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',
+      clientId: process.env.GOOGLE_CLIENT_ID,
+
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   adapter: FirebaseAdapter({

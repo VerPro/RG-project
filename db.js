@@ -13,8 +13,8 @@ import {
 import firebase, { getApps, getApp, initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDB3fNy4oVq_iX7k1xQ_0P-qvI_KV96PPA',
-  authDomain: 'cajovy-denik.firebaseapp.com',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
   projectId: 'cajovy-denik',
   storageBucket: 'cajovy-denik.appspot.com',
   messagingSenderId: '204364589194',
@@ -22,11 +22,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-//initializeApp(firebaseConfig);
+
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-//const appp = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-//export const db = getFirestore();
 
 const collectionRef = collection(db, 'users');
 
