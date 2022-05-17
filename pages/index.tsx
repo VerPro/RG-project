@@ -7,11 +7,34 @@ import Button from '@mui/material/Button';
 import logo from '../public/logo.png';
 import GoogleIcon from '@mui/icons-material/Google';
 import { Stack } from '@mui/material';
+import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
 
 export default function App() {
   /*const signInWithGoogle = async () => {
     await auth.signInWithPopup(googleAuthProvider);
   };*/
+
+  const [providers, setProviders] = useState<any[]>([]);
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      return await getProviders();
+    };
+
+    fetchData().then((p) => {
+      const providers = p ? Object.values(p) : [];
+
+      setProviders(providers);
+    });
+  }, []);
+
+  if (!providers) {
+    return null;
+  }
+
+  console.log(providers, session, 'providers, session');
 
   return (
     <>
@@ -42,19 +65,44 @@ export default function App() {
 
         <p>Máte již svůj účet? Přihlaste se!</p>
 
-        <Link href="/login" passHref>
-          <Button variant="outlined">
-            <a>Přihlásit se</a>
-          </Button>
-        </Link>
+        {/* <Link href="/login" passHref>
+                    <Button variant="outlined">
+                        <a>Přihlásit se</a>
+                    </Button>
+                </Link> */}
+
+        <div>
+          {providers.map((provider) => (
+            <div key={provider.name}>
+              <Button
+                variant="outlined"
+                type="submit"
+                startIcon={<GoogleIcon />}
+                onClick={async () => signIn(await signIn('google'))}
+              >
+                Sign in with {provider.name}
+              </Button>
+            </div>
+          ))}
+        </div>
 
         <Button
-          variant="outlined"
-          //onClick={signInWithGoogle}
-          startIcon={<GoogleIcon />}
+          onClick={() =>
+            signOut({
+              callbackUrl: '/',
+            })
+          }
         >
-          Přihlásit se pomocí Google účtu
+          Odhlásit
         </Button>
+
+        {/* <Button
+                    variant="outlined"
+                    //onClick={signInWithGoogle}
+                    startIcon={<GoogleIcon />}
+                >
+                    Přihlásit se pomocí Google účtu
+                </Button> */}
       </Stack>
     </>
   );

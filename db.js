@@ -1,4 +1,3 @@
-import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
   collection,
@@ -11,6 +10,7 @@ import {
   where,
   collectionGroup,
 } from 'firebase/firestore';
+import firebase, { getApps, getApp, initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDB3fNy4oVq_iX7k1xQ_0P-qvI_KV96PPA',
@@ -22,13 +22,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
-
-/*if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}*/
-
-export const db = getFirestore();
+//initializeApp(firebaseConfig);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+//const appp = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+//export const db = getFirestore();
 
 const collectionRef = collection(db, 'users');
 

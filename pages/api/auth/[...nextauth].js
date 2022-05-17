@@ -1,34 +1,39 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import { FirebaseAdapter } from '@next-auth/firebase-adapter';
-
-import firebase, { getApps, getApp, initializeApp } from 'firebase/app';
-import 'firebase/firestore';
-import { getFirestore } from 'firebase/firestore';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyDB3fNy4oVq_iX7k1xQ_0P-qvI_KV96PPA',
-  authDomain: 'cajovy-denik.firebaseapp.com',
-  projectId: 'cajovy-denik',
-  storageBucket: 'cajovy-denik.appspot.com',
-  messagingSenderId: '204364589194',
-  appId: '1:204364589194:web:734a448e130db87bcda573',
-};
-
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const db = getFirestore();
-
-const firestore = (
-  firebase.apps[0] ?? firebase.initializeApp(firebaseConfig)
-).firestore();
+import { db } from '../../../db';
+import * as firestoreFunctions from 'firebase/firestore';
 
 export default NextAuth({
-  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId:
+        '557058472327-kqb5r1bmnj8oemviud6gqpk6uncg67fh.apps.googleusercontent.com',
+      clientSecret: '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',
     }),
   ],
-  adapter: FirebaseAdapter(firestore),
+  adapter: FirebaseAdapter({
+    db: db,
+    ...firestoreFunctions,
+  }),
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.uid;
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
+    },
+  },
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
+  },
+  debug: true,
 });
