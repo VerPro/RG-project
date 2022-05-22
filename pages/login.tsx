@@ -26,7 +26,7 @@ export default function Login() {
 
   return (
     <>
-      <h1>Přihlásit se</h1>
+      <h1>Přihlášení</h1>
       <Stack spacing={2}>
         <Link href="/home" passHref>
           <Button variant="outlined">
@@ -36,27 +36,27 @@ export default function Login() {
 
         <Link href="/" passHref>
           <Button variant="outlined">
-            <a>Domů</a>
+            <a>Zpět</a>
           </Button>
         </Link>
-      </Stack>
 
-      <div>
-        {providers.map((provider) => (
-          <div key={provider.name}>
-            <Button
-              variant="outlined"
-              type="submit"
-              startIcon={<GoogleIcon />}
-              onClick={async () =>
-                signIn(await signIn('google'), { callbackUrl: '/' })
-              }
-            >
-              Sign in with {provider.name}
-            </Button>
-          </div>
-        ))}
-      </div>
+        <div>
+          {providers.map((provider) => (
+            <div key={provider.name}>
+              <Button
+                variant="outlined"
+                type="submit"
+                startIcon={<GoogleIcon />}
+                onClick={async () =>
+                  signIn(await signIn('google'), { callbackUrl: '/home' })
+                }
+              >
+                Přihlásit pomocí {provider.name}
+              </Button>
+            </div>
+          ))}
+        </div>
+      </Stack>
     </>
   );
 }

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
+import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Home() {
   return (
@@ -32,7 +34,11 @@ export default function Home() {
       </Link>
 
       <Link href="/" passHref>
-        <Button variant="outlined">
+        <Button
+          variant="outlined"
+          onClick={() => signOut({ callbackUrl: '/' })}
+          startIcon={<LogoutIcon />}
+        >
           <a>Odhlásit</a>
         </Button>
       </Link>

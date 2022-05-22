@@ -2,18 +2,14 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
-//import { auth, googleAuthProvider } from './db.js';
 import Button from '@mui/material/Button';
 import logo from '../public/logo.png';
-import GoogleIcon from '@mui/icons-material/Google';
 import { Stack } from '@mui/material';
 import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function App() {
-  /*const signInWithGoogle = async () => {
-    await auth.signInWithPopup(googleAuthProvider);
-  };*/
   const { data: session } = useSession();
   console.log(session);
 
@@ -38,37 +34,33 @@ export default function App() {
           čekají na objevení.
         </p>
 
-        <Link href="/signin" passHref>
+        {/*<Link href="/signin" passHref>
           <Button variant="outlined">
             <a>Vytvořit účet</a>
           </Button>
         </Link>
 
-        <p>Máte již svůj účet? Přihlaste se!</p>
+        <p>Máte již svůj účet? Přihlaste se!</p>*/}
 
-        {/* <Link href="/login" passHref>
-                    <Button variant="outlined">
-                        <a>Přihlásit se</a>
-                    </Button>
-                </Link> */}
+        <Link href="/login" passHref>
+          <Button variant="outlined">
+            <a>Přihlášení</a>
+          </Button>
+        </Link>
+
+        <Link href="/blog" passHref>
+          <Button variant="outlined">
+            <a>Blog</a>
+          </Button>
+        </Link>
 
         <Button
-          onClick={() =>
-            signOut({
-              callbackUrl: '/',
-            })
-          }
+          variant="outlined"
+          onClick={() => signOut({ callbackUrl: '/' })}
+          startIcon={<LogoutIcon />}
         >
           Odhlásit
         </Button>
-
-        {/* <Button
-                    variant="outlined"
-                    //onClick={signInWithGoogle}
-                    startIcon={<GoogleIcon />}
-                >
-                    Přihlásit se pomocí Google účtu
-                </Button> */}
       </Stack>
     </>
   );
