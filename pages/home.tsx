@@ -33,13 +33,9 @@ export default function Home() {
         </Button>
       </Link>
 
-      <Link href="/" passHref>
-        <Button
-          variant="outlined"
-          onClick={() => signOut({ callbackUrl: '/' })}
-          startIcon={<LogoutIcon />}
-        >
-          <a>Odhlásit</a>
+      <Link href="/profile" passHref>
+        <Button variant="outlined">
+          <a>Profil</a>
         </Button>
       </Link>
     </Stack>
