@@ -6,12 +6,6 @@ export const TeaDiary = () => {
     <Stack spacing={2}>
       <h1>Můj deník</h1>
 
-      <Link href="/home" passHref>
-        <Button variant="outlined">
-          <a> Domů</a>
-        </Button>
-      </Link>
-
       <Stack className="teas">
         <h2>Záznamy</h2>
 

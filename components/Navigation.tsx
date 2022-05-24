@@ -5,22 +5,27 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Navigation() {
-  const [value, setValue] = useState(0);
+  const router = useRouter();
+
+  const onLink = (href: string) => {
+    router.push(href);
+  };
 
   return (
     <Box sx={{ width: '1' }}>
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction label="Domů" icon={<HomeIcon />} />
-        <BottomNavigationAction label="Profil" icon={<PermIdentityIcon />} />
+      <BottomNavigation showLabels>
+        <BottomNavigationAction
+          label="Domů"
+          icon={<HomeIcon />}
+          onClick={() => onLink('/home')}
+        />
+        <BottomNavigationAction
+          label="Profil"
+          icon={<PermIdentityIcon onClick={() => onLink('/profile')} />}
+        />
         <BottomNavigationAction label="Nápověda" icon={<QuestionMarkIcon />} />
       </BottomNavigation>
     </Box>

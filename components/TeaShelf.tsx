@@ -6,12 +6,6 @@ export const TeaShelf = () => {
     <Stack spacing={2}>
       <h1>Moje čajová polička</h1>
 
-      <Link href="/home" passHref>
-        <Button variant="outlined">
-          <a> Domů</a>
-        </Button>
-      </Link>
-
       <Stack className="teas">
         <h2>Čaje</h2>
 
