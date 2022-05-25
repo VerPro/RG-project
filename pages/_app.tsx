@@ -8,9 +8,9 @@ import App, { AppProps } from 'next/app';
 // `useSession()` anywhere in your application to access the `session` object.
 function MyApp({ Component, pageProps, session }: AppProps) {
   console.log(session, 'session');
-  if (!session) {
-    return <Login />;
-  }
+  // if (!session) {
+  //   return <Login />;
+  // }
   return (
     <SessionProvider
       // Provider options are not required but can be useful in situations where

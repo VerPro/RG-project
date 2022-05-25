@@ -1,7 +1,4 @@
-import { Stack } from '@mui/material';
-import Button from '@mui/material/Button';
 import { useSession } from 'next-auth/react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Navigation from '../../components/Navigation';
 import { NoTeasScreen } from '../../components/NoTeasScreen';

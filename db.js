@@ -9,6 +9,7 @@ import {
   query,
   where,
   collectionGroup,
+  limit,
 } from 'firebase/firestore';
 import firebase, { getApps, getApp, initializeApp } from 'firebase/app';
 
@@ -29,39 +30,44 @@ export const db = getFirestore(app);
 const collectionRef = collection(db, 'users');
 
 //queries
-const q = query(
-  collectionRef,
-  where('id', '==', 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1'),
-);
+// const q = query(
+//   collectionRef,
+//   where('id', '==', 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1'),
+// );
 
-getDocs(collectionRef).then((snapshot) => {
-  console.log(snapshot.docs);
-});
+// getDocs(collectionRef).then((snapshot) => {
+//   console.log(snapshot.docs);
+// });
 
-const idRef = collection(db, 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1');
+// const idRef = collection(db, 'QoHR14C7tUhQ0ZWORxZoWUU4mGn1');
 
-getDocs(idRef).then((snapshot) => {
-  console.log(snapshot.docs);
-});
+// getDocs(idRef).then((snapshot) => {
+//   console.log(snapshot.docs);
+// });
 
-const teasRef = collection(db, 'teas');
+// const teasRef = collection(db, 'teas');
 
-getDocs(teasRef).then((snapshot) => {
-  console.log(snapshot.docs);
-});
+// getDocs(teasRef).then((snapshot) => {
+//   console.log(snapshot.docs);
+// });
 
-const teas = query(collectionGroup(db, 'teas'), where('type', '==', 'oolong'));
+// const teas = query(collectionGroup(db, 'teas'), where('type', '==', 'oolong'));
 
 //export const auth = firebase.auth();
 
 //export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-const getTeas = async (userId) => {
+export const getTeas = async (userId) => {
+  console.log('userId', userId);
   try {
     const usersRef = collection(db, 'users');
-    const userQ = query(usersRef, where('uis', '==', uid), limit(1));
+    console.log('usersRef', usersRef);
+    const userQ = query(usersRef, where('uid', '==', userId), limit(1));
+    console.log('userQ', userQ);
     const snapshot = await getDocs(userQ);
+    console.log('snapshot', snapshot);
     const userDoc = snapshot.docs[0];
+    console.log('userDoc', userDoc);
 
     if (userDoc) {
       const teasRef = collection(userDoc.ref, 'teas');
@@ -80,4 +86,3 @@ const getTeas = async (userId) => {
     console.log(err.message);
   }
 };
-export default getTeas;
