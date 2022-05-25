@@ -55,3 +55,29 @@ const teas = query(collectionGroup(db, 'teas'), where('type', '==', 'oolong'));
 //export const auth = firebase.auth();
 
 //export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+const getTeas = async (userId) => {
+  try {
+    const usersRef = collection(db, 'users');
+    const userQ = query(usersRef, where('uis', '==', uid), limit(1));
+    const snapshot = await getDocs(userQ);
+    const userDoc = snapshot.docs[0];
+
+    if (userDoc) {
+      const teasRef = collection(userDoc.ref, 'teas');
+      const teasQ = query(teasRef);
+
+      const snapshot = await getDocs(teasQ);
+      let teas = [];
+      snapshot.docs.forEach((doc) => {
+        const data = doc.data();
+        posts.push({ ...data });
+      });
+    } else {
+      throw new Error('Non existing user');
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+export default getTeas;
