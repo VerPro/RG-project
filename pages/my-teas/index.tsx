@@ -8,16 +8,24 @@ import { db, getTeas } from '../../db';
 const MyTeas = () => {
   console.log(`databáze: ${db}`);
 
-  const [numberOfTeas, setNumberOfTeas] = useState();
   const { data: session } = useSession();
+  const [teasInDb, setTeasInDb] = useState([]);
 
   useEffect(() => {
-    getTeas(session?.user?.id);
-  });
+    const saveTeas = async () => {
+      const teas = await getTeas(session?.user?.email);
+      setTeasInDb(teas);
+    };
+    saveTeas();
+  }, []);
+
+  // console.log('teasInDb', teasInDb);
+
+  // console.log(getTeas(session?.user?.email));
 
   //setNumberOfTeas(db.lenght) - tak nějak
 
-  if (numberOfTeas === 0) {
+  if (teasInDb.length === 0) {
     return (
       <>
         <NoTeasScreen />
@@ -27,7 +35,7 @@ const MyTeas = () => {
   } else {
     return (
       <>
-        <TeaShelf />
+        <TeaShelf teas={teasInDb} />
         <Navigation />
       </>
     );

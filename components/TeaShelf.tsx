@@ -1,7 +1,9 @@
 import { Stack, Button } from '@mui/material';
+
 import Link from 'next/link';
 
-export const TeaShelf = () => {
+export const TeaShelf = ({ teas }: any) => {
+  console.log('teas', teas);
   return (
     <Stack spacing={2}>
       <h1>Moje čajová polička</h1>
@@ -9,16 +11,11 @@ export const TeaShelf = () => {
       <Stack className="teas">
         <h2>Čaje</h2>
 
-        <Link href="/my-teas" passHref>
-          <Button variant="outlined">Tie Guan Yin</Button>
-        </Link>
-
-        <Link href="/my-teas" passHref>
-          <Button variant="outlined">Darjeeling</Button>
-        </Link>
-        <Link href="/my-teas" passHref>
-          <Button variant="outlined">Sencha</Button>
-        </Link>
+        {teas?.map((tea: any) => (
+          <Link href="/my-teas" passHref>
+            <Button variant="outlined">{tea.name}</Button>
+          </Link>
+        ))}
       </Stack>
       <Link href="/add-tea" passHref>
         <Button variant="outlined">

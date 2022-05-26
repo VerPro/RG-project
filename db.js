@@ -57,27 +57,25 @@ const collectionRef = collection(db, 'users');
 
 //export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export const getTeas = async (userId) => {
-  console.log('userId', userId);
+export const getTeas = async (userEmail) => {
   try {
     const usersRef = collection(db, 'users');
-    console.log('usersRef', usersRef);
-    const userQ = query(usersRef, where('uid', '==', userId), limit(1));
-    console.log('userQ', userQ);
+
+    const userQ = query(usersRef, where('email', '==', userEmail), limit(1));
+
     const snapshot = await getDocs(userQ);
-    console.log('snapshot', snapshot);
+    console.log('snapshots', snapshot);
+
     const userDoc = snapshot.docs[0];
-    console.log('userDoc', userDoc);
 
     if (userDoc) {
       const teasRef = collection(userDoc.ref, 'teas');
       const teasQ = query(teasRef);
 
       const snapshot = await getDocs(teasQ);
-      let teas = [];
-      snapshot.docs.forEach((doc) => {
-        const data = doc.data();
-        posts.push({ ...data });
+
+      return snapshot.docs.map((doc) => {
+        return doc.data();
       });
     } else {
       throw new Error('Non existing user');
