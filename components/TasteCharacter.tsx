@@ -5,7 +5,8 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect } from 'react';
+import { getTastePallete } from '../db';
 
 //možná ten list nacpat do FB a vyexportovat sem?
 const listOfTastes: string[] = [
@@ -30,6 +31,19 @@ const listOfTastes: string[] = [
   'Ořechy',
 ];
 export const TasteCharacter = () => {
+  //tahání taste profilu z DB, nefunguje, asi blbě napsaná query
+  const [tastes, setTastes] = useState([]);
+
+  useEffect(() => {
+    const saveTastePallete = async () => {
+      const tastesFromDB = await getTastePallete();
+      setTastes(tastesFromDB);
+    };
+    saveTastePallete();
+  }, []);
+  //
+
+  //handling of checking
   const [tasteCharacter, setTasteCharacter] = useState<string[]>([]);
   const handleTeaCharacterChange = (e: ChangeEvent<HTMLInputElement>) => {
     const index = tasteCharacter.indexOf(e.target.value);
@@ -41,6 +55,7 @@ export const TasteCharacter = () => {
       );
     }
   };
+  //
 
   return (
     <FormControl>

@@ -18,9 +18,13 @@ import DateAdapter from '@mui/lab/AdapterDayjs';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { DatePicker } from '@mui/lab';
 import { TasteCharacter } from '../components/TasteCharacter';
+import { addTea } from '../db';
+import { useSession } from 'next-auth/react';
 
-export default function AddTea() {
-  //Select management
+const AddTea = () => {
+  const { data: session } = useSession();
+  console.log('email: ', session?.user?.email);
+
   //možná ten list nacpat do FB a vyexportovat sem?
   const listOfTeaTypes: string[] = [
     'Bílý čaj',
@@ -36,6 +40,7 @@ export default function AddTea() {
     'Jiný',
   ];
 
+  //Select management
   const [selectedTea, setSelectedTea] = useState('');
   const handleSelectedTeaChange = (e: SelectChangeEvent) => {
     setSelectedTea(e.target.value);
@@ -49,7 +54,7 @@ export default function AddTea() {
   return (
     <>
       <h1>Přidat čaj</h1>
-      <Stack spacing={2}>
+      <Stack spacing={2} id="addTeaForm">
         <Link href="/my-teas" passHref>
           <Button variant="outlined">
             <a>Zpět</a>
@@ -60,6 +65,7 @@ export default function AddTea() {
           required
           id="outlined"
           label="Název čaje"
+          name="name"
           helperText="Zde napište název čaje"
         ></TextField>
 
@@ -70,6 +76,7 @@ export default function AddTea() {
             id="typeOfTea"
             value={selectedTea}
             label="Tea"
+            name="type"
             onChange={handleSelectedTeaChange}
           >
             {listOfTeaTypes.map((tea: string) => {
@@ -86,6 +93,7 @@ export default function AddTea() {
           required
           id="outlined"
           label="Dodavatel"
+          name="distributor"
           helperText="Kde jste čaj koupili?"
         ></TextField>
 
@@ -93,6 +101,7 @@ export default function AddTea() {
           <DatePicker
             label="Datum zakoupení"
             value={selectedDate}
+            name="buy-date"
             onChange={(newDate) => {
               setSelectedDate(newDate);
             }}
@@ -100,16 +109,25 @@ export default function AddTea() {
           ></DatePicker>
         </LocalizationProvider>
 
-        <TextField required id="outlined" label="Země původu"></TextField>
+        <TextField
+          required
+          id="outlined"
+          label="Země původu"
+          name="country"
+        ></TextField>
 
         <TasteCharacter />
 
-        <Link href="/add-tea" passHref>
-          <Button variant="outlined">
-            <a>Přidat čaj</a>
-          </Button>
-        </Link>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            return addTea(session?.user?.email);
+          }}
+        >
+          <a>Přidat čaj</a>
+        </Button>
       </Stack>
     </>
   );
-}
+};
+export default AddTea;

@@ -2,6 +2,7 @@ import {
   getFirestore,
   collection,
   getDocs,
+  getDoc,
   onSnapshot,
   addDoc,
   deleteDoc,
@@ -127,6 +128,39 @@ export const getEntries = async (userEmail) => {
     } else {
       throw new Error('Non existing user');
     }
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+//getting TastePallete (AppData) from DB - nefunguje, asi blbě napsaná query
+export const getTastePallete = async () => {
+  try {
+    const appDataRef = collection(db, 'appData');
+
+    const tastePalleteQ = query(appDataRef, where('id', '==', 'tastePallete'));
+
+    console.log('tastePalleteQ', tastePalleteQ);
+
+    const snapshot = await getDoc(tastePalleteQ);
+    console.log('snapshots', snapshot);
+
+    const tastePalleteDoc = snapshot.docs[0];
+
+    console.log('tastePalleteDoc', tastePalleteDoc);
+
+    // if (userDoc) {
+    //   const entriesRef = collection(userDoc.ref, 'entries');
+    //   const entriesQ = query(entriesRef);
+
+    //   const snapshot = await getDocs(entriesQ);
+
+    //   return snapshot.docs.map((doc) => {
+    //     return doc.data();
+    //   });
+    // } else {
+    //   throw new Error('Non existing user');
+    // }
   } catch (err) {
     console.log(err.message);
   }
