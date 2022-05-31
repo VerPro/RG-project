@@ -50,10 +50,43 @@ export const getTeas = async (userEmail) => {
 
     if (userDoc) {
       const teasRef = collection(userDoc.ref, 'teas');
+      console.log('teasRef', teasRef);
       const teasQ = query(teasRef);
+      console.log('teasQ', teasQ);
 
       const snapshot = await getDocs(teasQ);
 
+      return snapshot.docs.map((doc) => {
+        return doc.data();
+      });
+    } else {
+      throw new Error('Non existing user');
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+//getting one specific tea from DB
+export const getTeaDetail = async (userEmail, teaId) => {
+  try {
+    const usersRef = collection(db, 'users'); // TODO smazat, opakuje se
+
+    const userQ = query(usersRef, where('email', '==', userEmail), limit(1)); // TODO smazat, opakuje se
+
+    const snapshot = await getDocs(userQ);
+    console.log('snapshotsUser', snapshot);
+
+    const userDoc = snapshot.docs[0];
+
+    console.log('userDoc', userDoc);
+
+    if (userDoc) {
+      const teaDetailRef = doc(userDoc.ref, 'teas', teaId);
+      console.log('teaDetailRef', teaDetailRef);
+
+      const snapshot = await getDoc(teaDetailRef);
+      console.log('snapshotsDetail', snapshot);
       return snapshot.docs.map((doc) => {
         return doc.data();
       });

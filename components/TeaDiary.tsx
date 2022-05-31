@@ -11,7 +11,7 @@ export const TeaDiary = ({ entries }: any) => {
         <h2>Záznamy</h2>
 
         {entries?.map((entry: any) => (
-          <Link href="/my-entries" passHref>
+          <Link href="/[tea-id]" passHref>
             <Button variant="outlined">{entry.name}</Button>
           </Link>
         ))}

@@ -15,21 +15,9 @@ export default function Home() {
         </Button>
       </Link>
 
-      <Link href="/my-entries" passHref>
-        <Button variant="outlined">
-          <a>Můj deník</a>
-        </Button>
-      </Link>
-
       <Link href="/tea-drawer" passHref>
         <Button variant="outlined">
           <a>Vylosuj mi čaj</a>
-        </Button>
-      </Link>
-
-      <Link href="/blog" passHref>
-        <Button variant="outlined">
-          <a>Blog</a>
         </Button>
       </Link>
 
@@ -38,6 +26,20 @@ export default function Home() {
           <a>Profil</a>
         </Button>
       </Link>
+
+      {/*      
+      <Link href="/my-entries" passHref>
+        <Button variant="outlined">
+          <a>Můj deník</a>
+        </Button>
+      </Link>      
+      
+      <Link href="/blog" passHref>
+        <Button variant="outlined">
+          <a>Blog</a>
+        </Button>
+      </Link>
+ */}
     </Stack>
   );
 }

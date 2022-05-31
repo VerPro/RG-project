@@ -30,9 +30,15 @@ export default function App() {
         <p>
           Aplikace Čajový deník je dobrou přítelkyní každému, koho těší cesta
           čaje a rád by si své kroky zaznamenával. Na jednom místě si můžete
-          ukládat oblíbené čaje a degustační zápisy. Nepřeberné čajové horizonty
-          čekají na objevení.
+          ukládat oblíbené čaje a do budoucna přibudou degustační zápisy a mnoho
+          dalšího. Nepřeberné čajové horizonty čekají na objevení.
         </p>
+
+        <Link href="/login" passHref>
+          <Button variant="outlined">
+            <a>Přihlášení</a>
+          </Button>
+        </Link>
 
         {/*<Link href="/signin" passHref>
           <Button variant="outlined">
@@ -40,13 +46,9 @@ export default function App() {
           </Button>
         </Link>
 
-        <p>Máte již svůj účet? Přihlaste se!</p>*/}
+        <p>Máte již svůj účet? Přihlaste se!</p>
 
-        <Link href="/login" passHref>
-          <Button variant="outlined">
-            <a>Přihlášení</a>
-          </Button>
-        </Link>
+
 
         <Link href="/blog" passHref>
           <Button variant="outlined">
@@ -60,7 +62,7 @@ export default function App() {
           startIcon={<LogoutIcon />}
         >
           Odhlásit
-        </Button>
+        </Button>*/}
       </Stack>
     </>
   );

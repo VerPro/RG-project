@@ -11,11 +11,15 @@ export const TeaShelf = ({ teas }: any) => {
       <Stack className="teas">
         <h2>Čaje</h2>
 
-        {teas?.map((tea: any) => (
-          <Link href="/my-teas" passHref>
-            <Button variant="outlined">{tea.name}</Button>
-          </Link>
-        ))}
+        {teas?.map((tea: any) => {
+          console.log('teaId', tea.id.id);
+
+          return (
+            <Link href={`/my-teas/${tea.id.id}`} passHref>
+              <Button variant="outlined">{tea.name}</Button>
+            </Link>
+          );
+        })}
       </Stack>
       <Link href="/add-tea" passHref>
         <Button variant="outlined">
