@@ -23,11 +23,7 @@ export default function TeaDrawer() {
     namesOfTeas.push(tea.name);
   });
 
-  console.log('namesOfTeas', namesOfTeas);
-
   const [chosenOne, setChosenOne] = useState('???');
-
-  console.log('chosenOne', chosenOne);
 
   return (
     <Stack spacing={2}>
