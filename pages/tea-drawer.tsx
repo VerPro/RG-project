@@ -23,18 +23,25 @@ export default function TeaDrawer() {
     namesOfTeas.push(tea.name);
   });
 
-  const [chosenOne, setChosenOne] = useState('???');
+  const [chosenOne, setChosenOne] = useState('');
 
   return (
-    <Stack spacing={2}>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <h1>Vylosuj mi čaj</h1>
       <p>
         Nemůžete se rozhodnout, jaký čaj si dnes připravíte? Snadná pomoc! Ze
         všech čajů, které máte uložené na své Čajové poličce vám náhodně nějaký
         čaj vylosujeme.
       </p>
+
       <Button
-        variant="outlined"
+        sx={{ fontWeight: 'bold' }}
+        variant="contained"
         onClick={() =>
           setChosenOne(
             namesOfTeas[Math.floor(Math.random() * namesOfTeas.length)],
@@ -43,7 +50,10 @@ export default function TeaDrawer() {
       >
         Vylosuj mi čaj
       </Button>
-      <p>Tvým vylosovaným čajem je: {chosenOne}</p>
+      <p>Tvým vylosovaným čajem je:</p>
+      <p>
+        <span>{chosenOne}</span>
+      </p>
       <Navigation />
     </Stack>
   );

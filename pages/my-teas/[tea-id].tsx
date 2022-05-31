@@ -24,7 +24,12 @@ const Tea = () => {
   const date = teaDetail?.[`buy-date`].toDate();
 
   return (
-    <Stack>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <h1>Moje čajová polička</h1>
       <Link href="/my-teas">
         <Button variant="outlined">

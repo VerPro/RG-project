@@ -1,11 +1,7 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
 import {
-  Checkbox,
   FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
   InputLabel,
   MenuItem,
   Select,
@@ -20,6 +16,7 @@ import { DatePicker } from '@mui/lab';
 import { TasteCharacter } from '../components/TasteCharacter';
 import { addTea } from '../db';
 import { useSession } from 'next-auth/react';
+import Box from '@mui/material/Box';
 
 const AddTea = () => {
   const { data: session } = useSession();
@@ -53,79 +50,88 @@ const AddTea = () => {
 
   return (
     <>
-      <h1>Přidat čaj</h1>
-      <Stack spacing={2} id="addTeaForm">
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={4}
+        id="addTeaForm"
+      >
+        <h1>Přidat čaj</h1>
         <Link href="/my-teas" passHref>
-          <Button variant="outlined">
+          <Button variant="contained" size="small" color="secondary">
             <a>Zpět</a>
           </Button>
         </Link>
+        <Stack spacing={2}>
+          <TextField
+            required
+            id="outlined"
+            label="Název čaje"
+            name="name"
+            helperText="Zde napište název čaje"
+          ></TextField>
 
-        <TextField
-          required
-          id="outlined"
-          label="Název čaje"
-          name="name"
-          helperText="Zde napište název čaje"
-        ></TextField>
+          <FormControl>
+            <InputLabel id="typeOfTea">Typ čaje</InputLabel>
+            <Select
+              labelId="typeOfTea"
+              id="typeOfTea"
+              value={selectedTea}
+              label="Tea"
+              name="type"
+              onChange={handleSelectedTeaChange}
+            >
+              {listOfTeaTypes.map((tea: string) => {
+                return (
+                  <MenuItem key={tea} value={tea}>
+                    {tea}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
 
-        <FormControl>
-          <InputLabel id="typeOfTea">Typ čaje</InputLabel>
-          <Select
-            labelId="typeOfTea"
-            id="typeOfTea"
-            value={selectedTea}
-            label="Tea"
-            name="type"
-            onChange={handleSelectedTeaChange}
-          >
-            {listOfTeaTypes.map((tea: string) => {
-              return (
-                <MenuItem key={tea} value={tea}>
-                  {tea}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+          <TextField
+            required
+            id="outlined"
+            label="Dodavatel"
+            name="distributor"
+            helperText="Kde jste čaj koupili?"
+          ></TextField>
 
-        <TextField
-          required
-          id="outlined"
-          label="Dodavatel"
-          name="distributor"
-          helperText="Kde jste čaj koupili?"
-        ></TextField>
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DatePicker
+              label="Datum zakoupení"
+              value={selectedDate}
+              name="buy-date"
+              onChange={(newDate) => {
+                setSelectedDate(newDate);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            ></DatePicker>
+          </LocalizationProvider>
 
-        <LocalizationProvider dateAdapter={DateAdapter}>
-          <DatePicker
-            label="Datum zakoupení"
-            value={selectedDate}
-            name="buy-date"
-            onChange={(newDate) => {
-              setSelectedDate(newDate);
-            }}
-            renderInput={(params) => <TextField {...params} />}
-          ></DatePicker>
-        </LocalizationProvider>
+          <TextField
+            required
+            id="outlined"
+            label="Země původu"
+            name="country"
+          ></TextField>
 
-        <TextField
-          required
-          id="outlined"
-          label="Země původu"
-          name="country"
-        ></TextField>
+          <TasteCharacter />
 
-        <TasteCharacter />
-
-        <Button
-          variant="outlined"
-          onClick={() => {
-            return addTea(session?.user?.email);
-          }}
-        >
-          <a>Přidat čaj</a>
-        </Button>
+          <Box m={20}>
+            <Button
+              variant="contained"
+              onClick={() => {
+                return addTea(session?.user?.email);
+              }}
+            >
+              <a>Přidat čaj</a>
+            </Button>
+          </Box>
+        </Stack>
       </Stack>
     </>
   );

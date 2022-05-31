@@ -11,10 +11,15 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Entry = () => {
   return (
-    <Stack>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <h1>Můj deník</h1>
       <Link href="/my-teas" passHref>
-        <Button variant="outlined">
+        <Button variant="contained" color="secondary">
           <a>Zpět</a>
         </Button>
       </Link>

@@ -1,3 +1,4 @@
+import { Stack } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Navigation from '../../components/Navigation';
@@ -35,7 +36,14 @@ const MyTeas = () => {
   } else {
     return (
       <>
-        <TeaShelf teas={teasInDb} />
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          <TeaShelf teas={teasInDb} />
+        </Stack>
         <Navigation />
       </>
     );

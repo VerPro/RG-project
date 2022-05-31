@@ -3,6 +3,8 @@ import { getSession, SessionProvider } from 'next-auth/react';
 import { dividerClasses } from '@mui/material';
 import Login from './login';
 import App, { AppProps } from 'next/app';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../styles/theme';
 
 // Use the <SessionProvider> to improve performance and allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
@@ -11,14 +13,17 @@ function MyApp({ Component, pageProps, session }: AppProps) {
   // if (!session) {
   //   return <Login />;
   // }
+
   return (
-    <SessionProvider
-      // Provider options are not required but can be useful in situations where
-      // you have a short session maxAge time. Shown here with default values.
-      session={session}
-    >
-      <Component {...pageProps} />
-    </SessionProvider>
+    <ThemeProvider theme={theme}>
+      <SessionProvider
+        // Provider options are not required but can be useful in situations where
+        // you have a short session maxAge time. Shown here with default values.
+        session={session}
+      >
+        <Component {...pageProps} />
+      </SessionProvider>
+    </ThemeProvider>
   );
 }
 

@@ -4,22 +4,27 @@ import Link from 'next/link';
 
 export const TeaShelf = ({ teas }: any) => {
   return (
-    <Stack spacing={2}>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={4}
+    >
       <h1>Moje čajová polička</h1>
-
-      <Stack className="teas">
-        <h2>Čaje</h2>
-
+      <h2>Čaje</h2>
+      <Stack spacing={2}>
         {teas?.map((tea: any) => {
           return (
             <Link href={`/my-teas/${tea.id.id}`} passHref>
-              <Button variant="outlined">{tea.name}</Button>
+              <Button variant="contained" color="secondary">
+                {tea.name}
+              </Button>
             </Link>
           );
         })}
       </Stack>
       <Link href="/add-tea" passHref>
-        <Button variant="outlined">
+        <Button variant="contained">
           <a>Přidat čaj</a>
         </Button>
       </Link>

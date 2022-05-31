@@ -23,6 +23,7 @@ export default function Navigation() {
       >
         <BottomNavigation showLabels>
           <BottomNavigationAction
+            color="primary"
             label="Domů"
             icon={<HomeIcon />}
             onClick={() => onLink('/home')}

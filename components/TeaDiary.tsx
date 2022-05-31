@@ -4,10 +4,21 @@ import Link from 'next/link';
 export const TeaDiary = ({ entries }: any) => {
   console.log('entries', entries);
   return (
-    <Stack spacing={2}>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <h1>Můj deník</h1>
 
-      <Stack className="teas">
+      <Stack
+        className="teas"
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={2}
+      >
         <h2>Záznamy</h2>
 
         {entries?.map((entry: any) => (

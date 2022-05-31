@@ -12,7 +12,12 @@ export default function AddEntry() {
   //
 
   return (
-    <Stack spacing={2}>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <h1>Přidat zápis</h1>
 
       <Link href="/my-entries" passHref>
