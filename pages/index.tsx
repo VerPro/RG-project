@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import Button from '@mui/material/Button';
 import logo from '../public/teapot.png';
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -24,10 +24,11 @@ export default function App() {
           />
           <script
             src="https://kit.fontawesome.com/c22e5ccbaa.js"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           ></script>
         </Head>
       </div>
+      <Image src={logo} alt=""></Image>
       <Stack
         className="main"
         direction="column"
@@ -35,7 +36,6 @@ export default function App() {
         alignItems="center"
         spacing={3}
       >
-        <Image src={logo} alt=""></Image>
         <h1>Čajový deník</h1>
         <p>
           Aplikace Čajový deník je dobrou přítelkyní každému, koho těší cesta
