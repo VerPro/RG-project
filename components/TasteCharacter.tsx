@@ -32,15 +32,15 @@ const listOfTastes: string[] = [
 ];
 export const TasteCharacter = () => {
   //tahání taste profilu z DB, nefunguje, asi blbě napsaná query
-  const [tastes, setTastes] = useState([]);
+  // const [tastes, setTastes] = useState([]);
 
-  useEffect(() => {
-    const saveTastePallete = async () => {
-      const tastesFromDB = await getTastePallete();
-      setTastes(tastesFromDB);
-    };
-    saveTastePallete();
-  }, []);
+  // useEffect(() => {
+  //   const saveTastePallete = async () => {
+  //     const tastesFromDB = await getTastePallete();
+  //     setTastes(tastesFromDB);
+  //   };
+  //   saveTastePallete();
+  // }, []);
   //
 
   //handling of checking
