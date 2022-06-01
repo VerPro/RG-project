@@ -8,7 +8,8 @@ import { theme } from '../styles/theme';
 
 // Use the <SessionProvider> to improve performance and allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
-function MyApp({ Component, pageProps, session }: AppProps) {
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   console.log(session, 'session');
   // if (!session) {
   //   return <Login />;
@@ -27,7 +28,7 @@ function MyApp({ Component, pageProps, session }: AppProps) {
   );
 }
 
-MyApp.getInitialProps = async (context) => {
+MyApp.getInitialProps = async (context: any) => {
   const appProps = await App.getInitialProps(context);
   const session = await getSession(context);
 
