@@ -104,7 +104,7 @@ const AddTea = () => {
             <DatePicker
               label="Datum zakoupení"
               value={selectedDate}
-              name="buy-date"
+              //name="buy-date"
               onChange={(newDate) => {
                 setSelectedDate(newDate);
               }}
@@ -124,9 +124,9 @@ const AddTea = () => {
           <Box m={20}>
             <Button
               variant="contained"
-              onClick={() => {
-                return addTea(session?.user?.email);
-              }}
+              // onClick={() => {
+              //   return addTea(session?.user?.email);
+              // }}
             >
               <a>Přidat čaj</a>
             </Button>
