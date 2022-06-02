@@ -9,14 +9,15 @@ import { Stack } from '@mui/material';
 export default function TeaDrawer() {
   const { data: session } = useSession();
   const [teasInDb, setTeasInDb] = useState([]);
+  const userEmail = session?.user?.email;
 
   useEffect(() => {
     const saveTeas = async () => {
-      const teas = await getTeas(session?.user?.email);
+      const teas: any = await getTeas(userEmail);
       setTeasInDb(teas);
     };
     saveTeas();
-  }, []);
+  }, [userEmail]);
 
   const namesOfTeas: string[] = [];
   teasInDb.map((tea: any) => {

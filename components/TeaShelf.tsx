@@ -13,10 +13,10 @@ export const TeaShelf = ({ teas }: any) => {
       <h1>Moje čajová polička</h1>
       <h2>Čaje</h2>
       <Stack spacing={2}>
-        {teas?.map((tea: any) => {
+        {teas?.map((tea: any, index: number) => {
           return (
-            <Link href={`/my-teas/${tea.id.id}`} passHref>
-              <Button variant="contained" color="secondary">
+            <Link key={index} href={`/my-teas/${tea.id.id}`} passHref>
+              <Button key={index} variant="contained" color="secondary">
                 {tea.name}
               </Button>
             </Link>

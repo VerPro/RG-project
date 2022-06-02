@@ -21,9 +21,11 @@ export const TeaDiary = ({ entries }: any) => {
       >
         <h2>Záznamy</h2>
 
-        {entries?.map((entry: any) => (
-          <Link href="/[tea-id]" passHref>
-            <Button variant="outlined">{entry.name}</Button>
+        {entries?.map((entry: any, index: number) => (
+          <Link key={index} href="/[tea-id]" passHref>
+            <Button key={index} variant="outlined">
+              {entry.name}
+            </Button>
           </Link>
         ))}
       </Stack>

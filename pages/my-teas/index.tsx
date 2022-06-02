@@ -11,14 +11,15 @@ const MyTeas = () => {
 
   const { data: session } = useSession();
   const [teasInDb, setTeasInDb] = useState([]);
+  const userEmail = session?.user?.email;
 
   useEffect(() => {
     const saveTeas = async () => {
-      const teas = await getTeas(session?.user?.email);
+      const teas: any = await getTeas(userEmail);
       setTeasInDb(teas);
     };
     saveTeas();
-  }, []);
+  }, [userEmail]);
 
   // console.log('teasInDb', teasInDb);
 
