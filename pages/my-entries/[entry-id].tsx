@@ -9,7 +9,7 @@ import {
 import Link from 'next/link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export const Entry = () => {
+const Entry = () => {
   return (
     <Stack
       direction="column"
@@ -68,3 +68,4 @@ export const Entry = () => {
     </Stack>
   );
 };
+export default Entry;
