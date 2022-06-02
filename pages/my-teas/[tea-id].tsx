@@ -23,16 +23,7 @@ const Tea = () => {
   const date = teaDetail?.[`buy-date`].toDate();
 
   return (
-    <>
-      <div
-        style={{
-          minHeight: '100vh',
-          minWidth: '100vw',
-          position: 'absolute',
-          zIndex: '-1',
-          backgroundColor: 'red',
-        }}
-      ></div>
+    <div className="teaDetail">
       <Stack
         direction="column"
         justifyContent="center"
@@ -68,7 +59,7 @@ const Tea = () => {
         {/* Tahat z databáze
     <Button variant="outlined">Editovat čaj na poličce </Button>*/}
       </Stack>
-    </>
+    </div>
   );
 };
 
