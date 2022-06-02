@@ -9,13 +9,13 @@ const MyEntries = () => {
   const { data: session } = useSession();
   const [entriesInDb, setEntriesInDb] = useState([]);
 
-  useEffect(() => {
-    const saveEntries = async () => {
-      const entries = await getEntries(session?.user?.email);
-      setEntriesInDb(entries);
-    };
-    saveEntries();
-  }, []);
+  // useEffect(() => {
+  //   const saveEntries = async () => {
+  //     const entries = await getEntries(session?.user?.email);
+  //     setEntriesInDb(entries);
+  //   };
+  //   saveEntries();
+  // }, []);
 
   console.log('entriesInDb', entriesInDb);
 
