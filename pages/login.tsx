@@ -35,11 +35,11 @@ export default function Login() {
       >
         <h1>Přihlášení</h1>
         <Stack spacing={2}>
-          <Link href="/home" passHref>
+          {/* <Link href="/home" passHref>
             <Button variant="contained">
               <a>Přihlásit se</a>
             </Button>
-          </Link>
+  </Link>*/}
 
           <Link href="/" passHref>
             <Button variant="contained">
