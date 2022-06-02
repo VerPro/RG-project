@@ -22,7 +22,11 @@ const MyTeas = () => {
 
   if (teasInDb === undefined) {
     //nemáme data -> máme loading
-    return <CircularProgress />;
+    return (
+      <div className="loading">
+        <CircularProgress />
+      </div>
+    );
   } else {
     if (teasInDb !== undefined && teasInDb.length === 0) {
       return (
