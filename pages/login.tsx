@@ -5,6 +5,7 @@ import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faAt } from '@fortawesome/free-solid-svg-icons';
 
 export default function Login() {
   const [providers, setProviders] = useState<any[]>([]);
@@ -47,23 +48,29 @@ export default function Login() {
             </Button>
           </Link>
 
-          <div>
-            {providers.map((provider) => (
-              <div key={provider.name}>
-                <Button
-                  sx={{ fontWeight: 'bold' }}
-                  variant="contained"
-                  type="submit"
-                  startIcon={<FontAwesomeIcon icon={faGoogle} />}
-                  onClick={async () =>
-                    signIn(await signIn('google'), { callbackUrl: '/home' })
-                  }
-                >
-                  Přihlásit pomocí {provider.name}
-                </Button>
-              </div>
-            ))}
-          </div>
+          <Button
+            sx={{ fontWeight: 'bold' }}
+            variant="contained"
+            type="submit"
+            startIcon={<FontAwesomeIcon icon={faAt} />}
+            onClick={async () =>
+              signIn(await signIn('email'), { callbackUrl: '/home' })
+            }
+          >
+            Přihlásit pomocí emailu
+          </Button>
+
+          <Button
+            sx={{ fontWeight: 'bold' }}
+            variant="contained"
+            type="submit"
+            startIcon={<FontAwesomeIcon icon={faGoogle} />}
+            onClick={async () =>
+              signIn(await signIn('google'), { callbackUrl: '/home' })
+            }
+          >
+            Přihlásit pomocí Google
+          </Button>
         </Stack>
       </Stack>
     </>
