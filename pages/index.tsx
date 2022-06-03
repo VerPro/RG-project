@@ -22,7 +22,7 @@ export default function App() {
         </Head>
       </div>
       <Script src="https://kit.fontawesome.com/c22e5ccbaa.js"></Script>
-      <Image src={logo} alt=""></Image>
+      <div className="headerImg"></div>
       <Stack
         className="main"
         direction="column"
@@ -31,7 +31,7 @@ export default function App() {
         spacing={3}
       >
         <h1>Čajový deník</h1>
-        <p>
+        <p className="intro">
           Aplikace Čajový deník je dobrou přítelkyní každému, koho těší cesta
           čaje a rád by si své kroky zaznamenával. Na jednom místě si můžete
           ukládat oblíbené čaje a do budoucna přibudou degustační zápisy a mnoho

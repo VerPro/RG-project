@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import PersonIcon from '@mui/icons-material/Person';
+import StarIcon from '@mui/icons-material/Star';
 import { useRouter } from 'next/router';
 import { Paper } from '@mui/material';
 
@@ -23,18 +23,22 @@ export default function Navigation() {
       >
         <BottomNavigation showLabels>
           <BottomNavigationAction
-            color="primary"
+            sx={{ color: '#32681d' }}
             label="Domů"
             icon={<HomeIcon />}
             onClick={() => onLink('/home')}
           />
           <BottomNavigationAction
+            sx={{ color: '#32681d' }}
             label="Profil"
-            icon={<PermIdentityIcon onClick={() => onLink('/profile')} />}
+            icon={<PersonIcon />}
+            onClick={() => onLink('/profile')}
           />
           <BottomNavigationAction
-            label="Nápověda"
-            icon={<QuestionMarkIcon />}
+            sx={{ color: '#32681d' }}
+            label="Připravujeme"
+            icon={<StarIcon />}
+            onClick={() => onLink('/in-development')}
           />
         </BottomNavigation>
       </Paper>
